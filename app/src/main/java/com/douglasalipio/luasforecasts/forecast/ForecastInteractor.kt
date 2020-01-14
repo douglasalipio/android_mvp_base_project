@@ -9,7 +9,7 @@ import com.douglasalipio.luasforecasts.util.ui
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
-class ForecastInteractor @Inject constructor(private val appRepository: AppDataSource) : ForecastContract.Interactor {
+class  ForecastInteractor @Inject constructor(private val appRepository: AppDataSource) : ForecastContract.Interactor {
 
     private val compositeDisposable = CompositeDisposable()
 
