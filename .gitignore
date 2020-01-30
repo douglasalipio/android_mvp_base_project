@@ -10,5 +10,8 @@
 /.idea/
 .DS_Store
 /build
+.idea/
+.idea/codeStyles/Project.xml
+.idea/misc.xml
 /captures
 .externalNativeBuild
