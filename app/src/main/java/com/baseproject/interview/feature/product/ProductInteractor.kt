@@ -1,22 +1,20 @@
-package com.baseproject.interview.feature
+package com.baseproject.interview.feature.product
 
 
 import com.baseproject.interview.data.AppDataSource
-import com.baseproject.interview.data.AppRepository
-import com.baseproject.interview.data.Feature
+import com.baseproject.interview.data.feature.product.ProductDTO
 import com.baseproject.interview.util.io
 import com.baseproject.interview.util.ui
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
 import javax.inject.Inject
 
-class FeatureInteractor @Inject constructor(private val appRepository: AppDataSource) : FeatureContract.Interactor {
+class ProductInteractor @Inject constructor(private val appRepository: AppDataSource) : ProductContract.Interactor {
 
     private val compositeDisposable = CompositeDisposable()
 
     interface GetFeatureCallback {
 
-        fun onFeatureLoaded(data: List<Feature>)
+        fun onFeatureLoaded(data: ProductDTO)
 
         fun onDataNotAvailable(strError: String)
     }

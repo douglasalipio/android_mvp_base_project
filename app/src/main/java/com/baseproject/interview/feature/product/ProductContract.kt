@@ -1,16 +1,15 @@
-package com.baseproject.interview.feature
+package com.baseproject.interview.feature.product
 
 import com.baseproject.interview.foundation.BasePresenter
 import com.baseproject.interview.foundation.BaseView
-import com.baseproject.interview.data.Feature
+import com.baseproject.interview.data.feature.product.ProductDTO
 import com.baseproject.interview.foundation.BaseInteractor
-import io.reactivex.disposables.Disposable
 
-interface FeatureContract {
+interface ProductContract {
 
     interface View : BaseView<Presenter> {
 
-        fun showData(data: List<Feature>)
+        fun showData(data: ProductDTO)
         fun showDataError()
     }
 
@@ -20,6 +19,6 @@ interface FeatureContract {
 
     interface Interactor : BaseInteractor {
 
-        fun requestData(getFeatureCallback: FeatureInteractor.GetFeatureCallback)
+        fun requestData(getProductCallback: ProductInteractor.GetFeatureCallback)
     }
 }

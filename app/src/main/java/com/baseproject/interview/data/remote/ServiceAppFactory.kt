@@ -12,14 +12,9 @@ import java.util.concurrent.TimeUnit
 
 object ServiceAppFactory {
 
-    fun create(isDebug: Boolean): ApiHelper {
-        val okHttpClient = makeOkHttpClient(
-            makeLoggingInterceptor(isDebug)
-        )
-        return makeServiceApp(
-            okHttpClient,
-            makeGson()
-        )
+    fun create(isDebug: Boolean = true): ApiHelper {
+        val okHttpClient = makeOkHttpClient(makeLoggingInterceptor(isDebug))
+        return makeServiceApp(okHttpClient, makeGson())
     }
 
     private fun makeServiceApp(okHttpClient: OkHttpClient, gson: Gson): ApiHelper {

@@ -11,8 +11,6 @@ fun io(): Scheduler = Schedulers.io()
 
 fun ui(): Scheduler = AndroidSchedulers.mainThread()
 
-// Making all {@link Scheduler}s execute
-// synchronously so we can easily run assertions in our tests.
 fun synComputation(): Scheduler = Schedulers.trampoline()
 
 fun syncIo(): Scheduler = Schedulers.trampoline()

@@ -7,23 +7,19 @@ import com.baseproject.interview.data.AppRepository
 import com.baseproject.interview.data.remote.ApiHelper
 import com.baseproject.interview.data.remote.RemoteDataSource
 import com.baseproject.interview.data.remote.ServiceAppFactory
-import com.baseproject.interview.feature.FeatureActivity
-import com.baseproject.interview.feature.FeatureContract
-import com.baseproject.interview.feature.FeatureInteractor
-import com.baseproject.interview.feature.FeatureModule
-import dagger.Binds
+import com.baseproject.interview.feature.product.ProductActivity
+import com.baseproject.interview.feature.product.ProductModule
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
 import dagger.android.ContributesAndroidInjector
-import javax.inject.Singleton
 
 @Module
 abstract class ActivityModule {
 
     @ActivityScoped
-    @ContributesAndroidInjector(modules = [FeatureModule::class])
-    abstract fun featureAcitivity(): FeatureActivity
+    @ContributesAndroidInjector(modules = [ProductModule::class])
+    abstract fun featureAcitivity(): ProductActivity
 }
 
 @Module
@@ -53,5 +49,5 @@ class NetworkModule {
 
     @Provides
     @Reusable
-    internal fun providePostApi() = ServiceAppFactory.create(true)
+    internal fun providePostApi() = ServiceAppFactory.create()
 }
