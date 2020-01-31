@@ -3,30 +3,41 @@ package com.baseproject.interview.feature.product
 
 import com.baseproject.interview.data.AppDataSource
 import com.baseproject.interview.data.feature.product.ProductDto
+import com.baseproject.interview.data.feature.product.ProductDtoToProductMapper
 import com.baseproject.interview.util.io
 import com.baseproject.interview.util.ui
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
-class ProductInteractor @Inject constructor(private val appRepository: AppDataSource) : ProductContract.Interactor {
+class ProductInteractor @Inject constructor(
+    private val appRepository: AppDataSource,
+    private val mapper: ProductDtoToProductMapper
+) :
+    ProductContract.Interactor {
 
     private val compositeDisposable = CompositeDisposable()
 
-    interface GetFeatureCallback {
+    interface GetProductCallback {
 
-        fun onFeatureLoaded(data: ProductDto)
+        fun onProductLoaded(data: Product)
 
         fun onDataNotAvailable(strError: String)
     }
 
-    override fun requestData(getFeatureCallback: GetFeatureCallback) {
+    override fun requestData(getProductCallback: GetProductCallback) {
         compositeDisposable.add(
             appRepository.requestData()
                 .subscribeOn(io())
                 .observeOn(ui())
-                .doOnError { getFeatureCallback.onDataNotAvailable(it.message ?: "") }
-                .subscribe { onNext -> getFeatureCallback.onFeatureLoaded(onNext) }
+                .doOnError { onError(getProductCallback, it.message.orEmpty()) }
+                .subscribe { onSuccess(getProductCallback, it) }
         )
     }
+
+    private fun onError(getProductCallback: GetProductCallback, strError: String) =
+        getProductCallback.onDataNotAvailable(strError)
+
+    private fun onSuccess(getProductCallback: GetProductCallback, productDto: ProductDto) =
+        getProductCallback.onProductLoaded(mapper.map(productDto))
 }
 

@@ -1,9 +1,9 @@
-package com.baseproject.interview
+package com.baseproject.interview.product
 
-import com.baseproject.interview.data.AppDataSource
 import com.baseproject.interview.feature.product.ProductContract
 import com.baseproject.interview.feature.product.ProductInteractor
 import com.baseproject.interview.feature.product.ProductPresenter
+import com.baseproject.interview.mockProducts
 import com.nhaarman.mockitokotlin2.capture
 import com.nhaarman.mockitokotlin2.verify
 import org.junit.Before
@@ -16,13 +16,11 @@ import org.mockito.MockitoAnnotations
 
 class ProductPresenterTest {
     @Mock
-    private lateinit var appRepository: AppDataSource
-    @Mock
     private lateinit var view: ProductContract.View
     @Mock
     private lateinit var interactor: ProductContract.Interactor
     @Captor
-    private lateinit var getProductCallbackCaptor: ArgumentCaptor<ProductInteractor.GetFeatureCallback>
+    private lateinit var getProductCallbackCaptor: ArgumentCaptor<ProductInteractor.GetProductCallback>
     private lateinit var presenter: ProductPresenter
 
     @Before
@@ -37,8 +35,8 @@ class ProductPresenterTest {
     fun `should return a list of features`() {
         presenter.loadData()
         verify(interactor).requestData(capture(getProductCallbackCaptor))
-        getProductCallbackCaptor.value.onFeatureLoaded(mockProductDto())
-        verify(view).showData(mockProductDto())
+        getProductCallbackCaptor.value.onProductLoaded(mockProducts())
+        verify(view).showData(mockProducts())
     }
 
     @Test

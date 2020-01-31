@@ -13,6 +13,7 @@ import javax.inject.Singleton
         AppModule::class,
         ActivityModule::class,
         NetworkModule::class,
+        MapperModule::class,
         RepositoryModule::class]
 )
 interface AppComponent : AndroidInjector<FeatureApplication> {

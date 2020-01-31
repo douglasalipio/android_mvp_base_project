@@ -16,7 +16,7 @@
             android:theme="@style/AppTheme"
             tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
-        <activity android:name=".feature.product.ProductActivity">
+        <activity android:name=".feature.product.view.ProductActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
