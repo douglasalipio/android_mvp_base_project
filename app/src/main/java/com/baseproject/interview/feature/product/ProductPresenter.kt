@@ -1,7 +1,7 @@
 package com.baseproject.interview.feature.product
 
 
-import com.baseproject.interview.data.feature.product.ProductDTO
+import com.baseproject.interview.data.feature.product.ProductDto
 import com.baseproject.interview.di.ActivityScoped
 import javax.inject.Inject
 
@@ -18,7 +18,7 @@ class ProductPresenter @Inject constructor(private val interactor: ProductContra
     override fun loadData() {
         view?.let {
             interactor.requestData(object : ProductInteractor.GetFeatureCallback {
-                override fun onFeatureLoaded(data: ProductDTO) {
+                override fun onFeatureLoaded(data: ProductDto) {
                     it.showData(data)
                 }
 

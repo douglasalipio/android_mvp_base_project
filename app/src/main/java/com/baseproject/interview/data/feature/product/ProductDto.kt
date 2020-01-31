@@ -3,7 +3,7 @@ package com.baseproject.interview.data.feature.product
 import com.google.gson.annotations.SerializedName
 
 
-data class ProductDTO(
+data class ProductDto(
     @SerializedName("clusters")
     var clusters: List<Cluster>
 )

@@ -4,10 +4,10 @@ data class Product(var categories: List<Category>)
 
 data class Category(
     var tag: String,
-    var products: List<Product>
+    var subItems: List<SubItem>
 )
 
-data class Item(
+data class SubItem(
     var id: Int,
     var price: String,
     var title: String,

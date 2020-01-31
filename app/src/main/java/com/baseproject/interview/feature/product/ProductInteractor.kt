@@ -2,7 +2,7 @@ package com.baseproject.interview.feature.product
 
 
 import com.baseproject.interview.data.AppDataSource
-import com.baseproject.interview.data.feature.product.ProductDTO
+import com.baseproject.interview.data.feature.product.ProductDto
 import com.baseproject.interview.util.io
 import com.baseproject.interview.util.ui
 import io.reactivex.disposables.CompositeDisposable
@@ -14,7 +14,7 @@ class ProductInteractor @Inject constructor(private val appRepository: AppDataSo
 
     interface GetFeatureCallback {
 
-        fun onFeatureLoaded(data: ProductDTO)
+        fun onFeatureLoaded(data: ProductDto)
 
         fun onDataNotAvailable(strError: String)
     }

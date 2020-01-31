@@ -3,7 +3,7 @@ package com.baseproject.interview.feature.product
 import android.os.Bundle
 import android.util.Log
 import com.baseproject.interview.R
-import com.baseproject.interview.data.feature.product.ProductDTO
+import com.baseproject.interview.data.feature.product.ProductDto
 
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
@@ -21,7 +21,7 @@ class ProductActivity : DaggerAppCompatActivity(),
         productPresenter.loadData()
     }
 
-    override fun showData(data: ProductDTO) {
+    override fun showData(data: ProductDto) {
         Log.e("test", data.toString())
     }
 

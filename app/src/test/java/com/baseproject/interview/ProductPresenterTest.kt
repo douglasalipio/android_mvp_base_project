@@ -1,7 +1,6 @@
 package com.baseproject.interview
 
 import com.baseproject.interview.data.AppDataSource
-import com.baseproject.interview.data.feature.product.ProductDTO
 import com.baseproject.interview.feature.product.ProductContract
 import com.baseproject.interview.feature.product.ProductInteractor
 import com.baseproject.interview.feature.product.ProductPresenter
@@ -36,13 +35,10 @@ class ProductPresenterTest {
 
     @Test
     fun `should return a list of features`() {
-        val features = listOf<ProductDTO>()
         presenter.loadData()
-        //`when`(appRepository.requestData()).thenReturn(Flowable.just(features))
-        //verify(appRepository).requestData().subscribe()
         verify(interactor).requestData(capture(getProductCallbackCaptor))
-        getProductCallbackCaptor.value.onFeatureLoaded(ProductDTO())
-        verify(view).showData(features)
+        getProductCallbackCaptor.value.onFeatureLoaded(mockProductDto())
+        verify(view).showData(mockProductDto())
     }
 
     @Test
