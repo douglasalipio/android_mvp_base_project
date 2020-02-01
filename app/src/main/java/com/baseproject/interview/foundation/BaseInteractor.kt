@@ -1,3 +1,5 @@
 package com.baseproject.interview.foundation
 
-interface BaseInteractor
+interface BaseInteractor {
+    fun dispose()
+}

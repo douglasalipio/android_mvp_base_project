@@ -48,7 +48,7 @@ fun mockItem() = listOf(
 )
 
 fun mockProductDetail() = ProductDetail(
-    id = 10,
+    id = "10",
     price = "€20",
     title = "Bananas Pacovan",
     imageUrl = "url_img",
@@ -57,7 +57,7 @@ fun mockProductDetail() = ProductDetail(
 )
 
 fun mockProductDetailDto() = ProductDetailDto(
-    id = 10,
+    id = "10",
     price = "€20",
     title = "Bananas Pacovan",
     imageUrl = "url_img",

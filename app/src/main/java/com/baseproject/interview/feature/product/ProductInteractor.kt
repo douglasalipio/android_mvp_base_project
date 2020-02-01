@@ -34,6 +34,8 @@ class ProductInteractor @Inject constructor(
         )
     }
 
+    override fun dispose() = compositeDisposable.dispose()
+
     private fun onError(getProductCallback: GetProductCallback, strError: String) =
         getProductCallback.onDataNotAvailable(strError)
 

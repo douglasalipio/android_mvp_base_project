@@ -1,7 +1,7 @@
 package com.baseproject.interview.feature.productdetail
 
 data class ProductDetail(
-    var id: Int,
+    var id: String,
     var price: String,
     var title: String,
     var imageUrl: String,
