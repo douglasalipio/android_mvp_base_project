@@ -3,7 +3,7 @@ package com.baseproject.interview.di
 import android.app.Application
 import com.baseproject.interview.data.AppDataSource
 import com.baseproject.interview.data.AppRepository
-import com.baseproject.interview.data.feature.product.ProductDtoToProductMapper
+import com.baseproject.interview.data.feature.product.ProductDtoMapper
 import com.baseproject.interview.data.remote.ApiHelper
 import com.baseproject.interview.data.remote.RemoteDataSource
 import com.baseproject.interview.data.remote.ServiceAppFactory
@@ -43,7 +43,7 @@ class RepositoryModule {
 class MapperModule{
     @Provides
     @Reusable
-    internal fun provideMapper() = ProductDtoToProductMapper()
+    internal fun provideMapper() = ProductDtoMapper()
 }
 
 @Module

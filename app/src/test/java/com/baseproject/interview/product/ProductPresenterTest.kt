@@ -6,6 +6,7 @@ import com.baseproject.interview.feature.product.ProductPresenter
 import com.baseproject.interview.mockProducts
 import com.nhaarman.mockitokotlin2.capture
 import com.nhaarman.mockitokotlin2.verify
+import com.xwray.groupie.Section
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentCaptor
@@ -22,6 +23,7 @@ class ProductPresenterTest {
     @Captor
     private lateinit var getProductCallbackCaptor: ArgumentCaptor<ProductInteractor.GetProductCallback>
     private lateinit var presenter: ProductPresenter
+    private val clickProductDetail: (String) -> Unit = {}
 
     @Before
     fun setUp() {
@@ -34,9 +36,13 @@ class ProductPresenterTest {
     @Test
     fun `should return a list of features`() {
         presenter.loadData()
+        presenter.mapProductItems(mockProducts(), clickProductDetail)
+
         verify(interactor).requestData(capture(getProductCallbackCaptor))
         getProductCallbackCaptor.value.onProductLoaded(mockProducts())
-        verify(view).showData(mockProducts())
+
+        verify(view).setUpGridList(1, mockProducts())
+        verify(view).showProducts(Section())
     }
 
     @Test

@@ -1,15 +1,15 @@
 package com.baseproject.interview.product
 
-import com.baseproject.interview.data.feature.product.ProductDtoToProductMapper
+import com.baseproject.interview.data.feature.product.ProductDtoMapper
 import com.baseproject.interview.mockProductDto
 import com.baseproject.interview.mockProducts
 import org.hamcrest.CoreMatchers.hasItem
 import org.junit.Assert.assertThat
 import org.junit.Test
 
-class ProductDtoToProductMapperTest {
+class ProductDtoMapperTest {
 
-    private val mapper = ProductDtoToProductMapper()
+    private val mapper = ProductDtoMapper()
 
     @Test
     fun `should map section model to section`() {

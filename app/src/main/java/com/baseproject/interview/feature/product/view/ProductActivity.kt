@@ -36,14 +36,10 @@ class ProductActivity : DaggerAppCompatActivity(),
     override fun setUpGridList(totalItems: Int, data: Product) {
         adapter.spanCount = totalItems
         productList.initGridLayout(this, adapter, adapter.spanCount)
-        //val dimens = resources.getDimensionPixelSize(R.dimen.padding_standard)
-        //productList?.addItemDecoration(SpacesItemDecoration(dimens))
         presenter.mapProductItems(data, clickProductDetail)
     }
 
-    override fun showData(sections: List<Section>) {
-        sections.map { adapter.add(it) }
-    }
+    override fun showProducts(section: Section) = adapter.add(section)
 
 
     override fun showDataError() {

@@ -1,7 +1,6 @@
 package com.baseproject.interview.feature.product
 
 
-import com.baseproject.interview.data.feature.product.ProductDto
 import com.baseproject.interview.di.ActivityScoped
 import com.baseproject.interview.feature.product.util.mapToProductGroup
 import com.baseproject.interview.feature.product.view.ProductHeader
@@ -37,14 +36,12 @@ class ProductPresenter @Inject constructor(private val interactor: ProductContra
     }
 
     override fun mapProductItems(data: Product, clickProductDetail: (String) -> Unit) {
-        val sections = mutableListOf<Section>()
         data.categories.forEach { category ->
             val section = Section(ProductHeader(category.tag))
             val group = category.subItems.mapToProductGroup(clickProductDetail)
             section.add(group)
-            sections.add(section)
+            view?.showProducts(section)
         }
-        view?.showData(sections)
     }
 
     override fun dropView() {

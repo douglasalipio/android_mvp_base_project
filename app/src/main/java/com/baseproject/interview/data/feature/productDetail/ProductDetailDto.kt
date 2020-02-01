@@ -4,15 +4,15 @@ import com.google.gson.annotations.SerializedName
 
 data class ProductDetailDto(
     @SerializedName("id")
-    var id: Int? = null,
+    var id: Int,
     @SerializedName("price")
-    var price: String? = null,
+    var price: String,
     @SerializedName("title")
-    var title: String? = null,
+    var title: String,
     @SerializedName("imageUrl")
-    var imageUrl: String? = null,
+    var imageUrl: String,
     @SerializedName("description")
-    var description: String? = null,
+    var description: String,
     @SerializedName("allergyInformation")
-    var allergyInformation: String? = null
+    var allergyInformation: String
 )

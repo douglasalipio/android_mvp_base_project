@@ -6,7 +6,7 @@ import com.baseproject.interview.feature.product.SubItem
 import com.baseproject.interview.util.Mapper
 
 
-class ProductDtoToProductMapper : Mapper<ProductDto, Product> {
+class ProductDtoMapper : Mapper<ProductDto, Product> {
 
     override fun map(from: ProductDto) = Product(categories = from.clusters.mapCategories())
 

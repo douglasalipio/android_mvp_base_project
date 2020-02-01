@@ -3,7 +3,7 @@ package com.baseproject.interview.feature.product
 
 import com.baseproject.interview.data.AppDataSource
 import com.baseproject.interview.data.feature.product.ProductDto
-import com.baseproject.interview.data.feature.product.ProductDtoToProductMapper
+import com.baseproject.interview.data.feature.product.ProductDtoMapper
 import com.baseproject.interview.util.io
 import com.baseproject.interview.util.ui
 import io.reactivex.disposables.CompositeDisposable
@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 class ProductInteractor @Inject constructor(
     private val appRepository: AppDataSource,
-    private val mapper: ProductDtoToProductMapper
+    private val mapper: ProductDtoMapper
 ) :
     ProductContract.Interactor {
 

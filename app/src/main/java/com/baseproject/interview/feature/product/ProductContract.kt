@@ -10,7 +10,7 @@ interface ProductContract {
 
     interface View : BaseView<Presenter> {
 
-        fun showData(sections: List<Section>)
+        fun showProducts(section: Section)
         fun showDataError()
         fun setUpGridList(totalItems: Int, data: Product)
     }
