@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">DodôMarket</string>
+    <string name="app_name">FakeMarket</string>
+    <string name="euro_symbol">€</string>
 </resources>

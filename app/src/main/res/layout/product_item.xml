@@ -33,6 +33,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                 android:textColor="@color/colorPrimaryDark"
+                android:layout_marginTop="@dimen/grid_20"
                 app:layout_constraintStart_toStartOf="@id/photoImg"
                 app:layout_constraintTop_toBottomOf="@id/photoImg"
                 android:lines="3"

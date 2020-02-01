@@ -1,8 +1,6 @@
 package com.baseproject.interview.feature.product.view
 
 import android.annotation.SuppressLint
-import android.view.View
-import android.widget.LinearLayout
 import com.baseproject.interview.R
 import com.baseproject.interview.feature.product.SubItem
 import com.bumptech.glide.Glide
@@ -18,12 +16,13 @@ class ProductItem(
 
     private val columnNumber = 2
 
+
     @SuppressLint("SetTextI18n")
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
         with(viewHolder.itemView) {
             Glide.with(context).load(subItem.imageUrl).into(photoImg)
             productTitle.text = subItem.title
-            productPrice.text = "€${subItem.price}"
+            productPrice.text = "${context.getString(R.string.euro_symbol)} ${subItem.price}"
             productSize.text = subItem.size
             setOnClickListener { clickListener(subItem.id.toString()) }
         }
