@@ -6,5 +6,5 @@ import javax.inject.Inject
 
 class AppRepository @Inject constructor(private val remoteDataSource: RemoteDataSource) : AppDataSource {
 
-    override fun requestData() = remoteDataSource.requestData()
+    override fun requestProducts() = remoteDataSource.requestProducts()
 }

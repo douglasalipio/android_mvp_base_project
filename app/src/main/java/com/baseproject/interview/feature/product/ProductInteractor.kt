@@ -26,7 +26,7 @@ class ProductInteractor @Inject constructor(
 
     override fun requestData(getProductCallback: GetProductCallback) {
         compositeDisposable.add(
-            appRepository.requestData()
+            appRepository.requestProducts()
                 .subscribeOn(io())
                 .observeOn(ui())
                 .doOnError { onError(getProductCallback, it.message.orEmpty()) }

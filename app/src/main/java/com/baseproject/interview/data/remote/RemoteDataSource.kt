@@ -4,6 +4,7 @@ import com.baseproject.interview.data.AppDataSource
 
 class RemoteDataSource(private val apiHelper: ApiHelper) : AppDataSource {
 
-    override fun requestData() = apiHelper.getData()
+    override fun requestProducts() = apiHelper.getData()
 
+    override fun requestProductDetailById(productId: String)  = apiHelper.getProductDetail(productId)
 }
