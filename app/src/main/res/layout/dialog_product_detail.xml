@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/grid_8">
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/photoImg"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/bananas" />
+
+
+    <TextView
+            android:id="@+id/productDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_8"
+            android:layout_marginStart="@dimen/grid_8"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/colorPrimaryDark"
+            app:layout_constraintStart_toStartOf="@id/photoImg"
+            app:layout_constraintTop_toBottomOf="@id/photoImg"
+            tools:text="All the same small size these firm tightly layered leeks have a subtle onion flavour." />
+
+    <TextView
+            android:id="@+id/allergyInformation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_8"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@android:color/darker_gray"
+            app:layout_constraintStart_toStartOf="@id/productDescription"
+            app:layout_constraintTop_toBottomOf="@id/productDescription"
+            tools:text="Cereals containing gluten. Wheat Flour, milk, soya flour" />
+</androidx.constraintlayout.widget.ConstraintLayout>

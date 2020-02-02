@@ -10,5 +10,5 @@ interface AppDataSource {
 
     fun requestProducts(): Flowable<ProductDto>
 
-    fun requestProductDetailById(productId: String) : Flowable<ProductDetailDto>
+    fun requestProductDetailById(productId: String) : Flowable<List<ProductDetailDto>>
 }

@@ -47,6 +47,6 @@ class ProductDetailPresenterTest {
         presenter.loadProductDetail("id")
         verify(interactor).requestData(capture(getProductDetailCallbackCaptor), any())
         getProductDetailCallbackCaptor.value.onDataNotAvailable("data not available.")
-        verify(view).showDataError()
+        verify(view).showProductDetailError()
     }
 }

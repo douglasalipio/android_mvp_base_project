@@ -4,6 +4,7 @@ import android.app.Application
 import com.baseproject.interview.data.AppDataSource
 import com.baseproject.interview.data.AppRepository
 import com.baseproject.interview.data.feature.product.ProductDtoMapper
+import com.baseproject.interview.data.feature.productDetail.ProductDetailDtoMapper
 import com.baseproject.interview.data.remote.ApiHelper
 import com.baseproject.interview.data.remote.RemoteDataSource
 import com.baseproject.interview.data.remote.ServiceAppFactory
@@ -39,11 +40,16 @@ class RepositoryModule {
         AppRepository(remoteDataSource)
 
 }
+
 @Module
-class MapperModule{
+class MapperModule {
     @Provides
     @Reusable
-    internal fun provideMapper() = ProductDtoMapper()
+    internal fun provideProductMapper() = ProductDtoMapper()
+
+    @Provides
+    @Reusable
+    internal fun provideProductDetailMapper() = ProductDetailDtoMapper()
 }
 
 @Module

@@ -7,13 +7,13 @@ import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-const val BASE_URL = "https://my-json-server.typicode.com/ocadotechnology/mobile-challenge"
+const val BASE_URL = "https://my-json-server.typicode.com"
 
 interface ApiHelper {
 
-    @GET("/products")
+    @GET("/ocadotechnology/mobile-challenge/products")
     fun getData(): Flowable<ProductDto>
 
-    @GET("/product")
-    fun getProductDetail(@Query("product_id") productId: String): Flowable<ProductDetailDto>
+    @GET("/ocadotechnology/mobile-challenge/product")
+    fun getProductDetail(@Query("product_id") productId: String): Flowable<List<ProductDetailDto>>
 }

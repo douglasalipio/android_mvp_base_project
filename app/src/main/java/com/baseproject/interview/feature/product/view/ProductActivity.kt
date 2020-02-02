@@ -2,13 +2,12 @@ package com.baseproject.interview.feature.product.view
 
 import android.os.Bundle
 import android.util.Log
-import androidx.core.content.ContextCompat
 import com.baseproject.interview.R
 import com.baseproject.interview.feature.product.Product
 import com.baseproject.interview.feature.product.ProductContract
-import com.baseproject.interview.util.ProductDecorator
-import com.baseproject.interview.util.SpacesItemDecoration
+import com.baseproject.interview.feature.productdetail.ProductDetail
 import com.baseproject.interview.util.initGridLayout
+import com.baseproject.interview.util.showFullPhotoDialog
 
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
@@ -39,14 +38,13 @@ class ProductActivity : DaggerAppCompatActivity(),
         presenter.mapProductItems(data, clickProductDetail)
     }
 
+    override fun showProductDetail(data: ProductDetail) = this.showFullPhotoDialog(data)
+
     override fun showProducts(section: Section) = adapter.add(section)
 
+    private fun onProductDetailClicked(productId: String) = presenter.loadProductDetail(productId)
 
     override fun showDataError() {
         Log.e("test", "feature error.")
-    }
-
-    private fun onProductDetailClicked(productId: String) {
-
     }
 }

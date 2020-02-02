@@ -19,7 +19,7 @@ class ProductDetailPresenter @Inject constructor(private val interactor: Product
             }
 
             override fun onDataNotAvailable(strError: String) {
-                view?.showDataError()
+                view?.showProductDetailError()
             }
         },productId)
     }

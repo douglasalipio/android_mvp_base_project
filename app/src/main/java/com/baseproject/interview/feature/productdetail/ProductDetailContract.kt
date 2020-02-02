@@ -9,7 +9,7 @@ import com.xwray.groupie.Section
 interface ProductDetailContract {
 
     interface View : BaseView<Presenter> {
-        fun showDataError()
+        fun showProductDetailError()
         fun showProductDetail(productDetail : ProductDetail)
     }
 

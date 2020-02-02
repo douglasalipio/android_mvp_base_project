@@ -26,22 +26,16 @@ class ProductDetailInteractor @Inject constructor(
         fun onDataNotAvailable(strError: String)
     }
 
-    override fun requestData(getProductCallback: GetProductDetailCallback, productId : String) {
-        compositeDisposable.add(
-            appRepository.requestProductDetailById(productId)
-                .subscribeOn(io())
-                .observeOn(ui())
-                .doOnError { onError(getProductCallback, it.message.orEmpty()) }
-                .subscribe { onSuccess(getProductCallback, it) }
-        )
+    override fun requestData(getProductCallback: GetProductDetailCallback, productId: String) {
+//        compositeDisposable.add(
+//            appRepository.requestProductDetailById(productId)
+//                .subscribeOn(io())
+//                .observeOn(ui())
+//                .doOnError { onError(getProductCallback, it.message.orEmpty()) }
+//                .subscribe { onSuccess(getProductCallback, it) }
+//        )
     }
 
     override fun dispose() = compositeDisposable.dispose()
-
-    private fun onError(getProductCallback: GetProductDetailCallback, strError: String) =
-        getProductCallback.onDataNotAvailable(strError)
-
-    private fun onSuccess(getProductCallback: GetProductDetailCallback, data: ProductDetailDto) =
-        getProductCallback.onProductDetailLoaded(mapper.map(data))
 }
 
