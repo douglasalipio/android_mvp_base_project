@@ -1,7 +1,7 @@
 package com.baseproject.interview.feature.product
 
-import com.baseproject.interview.feature.productdetail.ProductDetail
-import com.baseproject.interview.feature.productdetail.ProductDetailInteractor
+import com.baseproject.interview.feature.product.data.Product
+import com.baseproject.interview.feature.product.data.ProductDetail
 import com.baseproject.interview.foundation.BasePresenter
 import com.baseproject.interview.foundation.BaseView
 import com.baseproject.interview.foundation.BaseInteractor
@@ -13,7 +13,7 @@ interface ProductContract {
 
         fun showProducts(section: Section)
         fun showDataError()
-        fun setUpGridList(totalItems: Int, data: Product)
+        fun setUpGridList(totalItems: Int, product: Product)
         fun showProductDetail(productDetail: ProductDetail)
     }
 
@@ -24,11 +24,11 @@ interface ProductContract {
     }
 
     interface Interactor : BaseInteractor {
-        fun requestData(
+        fun requestProductDetail(
             getProductDetailCallback: ProductInteractor.GetProductDetailCallback,
             productId: String
         )
 
-        fun requestData(getProductCallback: ProductInteractor.GetProductCallback)
+        fun requestProducts(getProductCallback: ProductInteractor.GetProductCallback)
     }
 }

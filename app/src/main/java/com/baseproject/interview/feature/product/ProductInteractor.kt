@@ -2,12 +2,10 @@ package com.baseproject.interview.feature.product
 
 
 import com.baseproject.interview.data.AppDataSource
-import com.baseproject.interview.data.feature.product.ProductDto
 import com.baseproject.interview.data.feature.product.ProductDtoMapper
-import com.baseproject.interview.data.feature.productDetail.ProductDetailDto
 import com.baseproject.interview.data.feature.productDetail.ProductDetailDtoMapper
-import com.baseproject.interview.feature.productdetail.ProductDetail
-import com.baseproject.interview.feature.productdetail.ProductDetailInteractor
+import com.baseproject.interview.feature.product.data.Product
+import com.baseproject.interview.feature.product.data.ProductDetail
 import com.baseproject.interview.util.io
 import com.baseproject.interview.util.ui
 import io.reactivex.disposables.CompositeDisposable
@@ -22,21 +20,7 @@ class ProductInteractor @Inject constructor(
 
     private val compositeDisposable = CompositeDisposable()
 
-    interface GetProductCallback {
-
-        fun onProductLoaded(data: Product)
-
-        fun onDataNotAvailable(strError: String)
-    }
-
-    interface GetProductDetailCallback {
-
-        fun onProductDetailLoaded(data: List<ProductDetail>)
-
-        fun onDataNotAvailable(strError: String)
-    }
-
-    override fun requestData(getProductCallback: GetProductCallback) {
+    override fun requestProducts(getProductCallback: GetProductCallback) {
         compositeDisposable.add(
             appRepository.requestProducts()
                 .subscribeOn(io())
@@ -46,7 +30,7 @@ class ProductInteractor @Inject constructor(
         )
     }
 
-    override fun requestData(
+    override fun requestProductDetail(
         getProductDetailCallback: GetProductDetailCallback,
         productId: String
     ) {
@@ -62,6 +46,20 @@ class ProductInteractor @Inject constructor(
     }
 
     override fun dispose() = compositeDisposable.dispose()
+
+    interface GetProductCallback {
+
+        fun onProductLoaded(data: Product)
+
+        fun onDataNotAvailable(strError: String)
+    }
+
+    interface GetProductDetailCallback {
+
+        fun onProductDetailLoaded(data: List<ProductDetail>)
+
+        fun onDataNotAvailable(strError: String)
+    }
 
 }
 

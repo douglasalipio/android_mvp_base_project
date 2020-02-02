@@ -2,10 +2,10 @@ package com.baseproject.interview.feature.product
 
 
 import com.baseproject.interview.di.ActivityScoped
-import com.baseproject.interview.feature.product.util.mapToProductGroup
+import com.baseproject.interview.feature.product.data.Product
+import com.baseproject.interview.feature.product.data.ProductDetail
+import com.baseproject.interview.feature.product.extensions.mapToProductGroup
 import com.baseproject.interview.feature.product.view.ProductHeader
-import com.baseproject.interview.feature.productdetail.ProductDetail
-import com.baseproject.interview.feature.productdetail.ProductDetailInteractor
 import com.xwray.groupie.Section
 import javax.inject.Inject
 
@@ -20,7 +20,7 @@ class ProductPresenter @Inject constructor(private val interactor: ProductContra
     }
 
     override fun loadData() {
-        interactor.requestData(object : ProductInteractor.GetProductCallback {
+        interactor.requestProducts(object : ProductInteractor.GetProductCallback {
 
             override fun onProductLoaded(data: Product) {
                 calculateTotalOfProducts(data)
@@ -33,7 +33,7 @@ class ProductPresenter @Inject constructor(private val interactor: ProductContra
     }
 
     override fun loadProductDetail(productId: String) {
-        interactor.requestData(object : ProductInteractor.GetProductDetailCallback {
+        interactor.requestProductDetail(object : ProductInteractor.GetProductDetailCallback {
 
             override fun onProductDetailLoaded(data: List<ProductDetail>) {
                 view?.showProductDetail(data.first { it.id == productId })

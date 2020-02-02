@@ -4,13 +4,14 @@ import com.baseproject.interview.data.feature.product.Cluster
 import com.baseproject.interview.data.feature.product.Item
 import com.baseproject.interview.data.feature.product.ProductDto
 import com.baseproject.interview.data.feature.productDetail.ProductDetailDto
-import com.baseproject.interview.feature.product.Category
-import com.baseproject.interview.feature.product.Product
-import com.baseproject.interview.feature.product.SubItem
-import com.baseproject.interview.feature.productdetail.ProductDetail
+import com.baseproject.interview.feature.product.data.Category
+import com.baseproject.interview.feature.product.data.Product
+import com.baseproject.interview.feature.product.data.SubItem
+import com.baseproject.interview.feature.product.data.ProductDetail
 
 
-fun mockProducts() = Product(mockCategories())
+fun mockProducts() =
+    Product(mockCategories())
 fun mockProductDto() = ProductDto(mockCluster())
 
 fun mockCategories() = listOf(
@@ -47,13 +48,25 @@ fun mockItem() = listOf(
     )
 )
 
-fun mockProductDetail() = ProductDetail(
-    id = "10",
-    price = "€20",
-    title = "Bananas Pacovan",
-    imageUrl = "url_img",
-    description = "Organic. Suitable for vegetarians",
-    allergyInformation = "May contain traces of Sesame Seeds"
+fun mockProductDetail() =
+    ProductDetail(
+        id = "10",
+        price = "€20",
+        title = "Bananas Pacovan",
+        imageUrl = "url_img",
+        description = "Organic. Suitable for vegetarians",
+        allergyInformation = "May contain traces of Sesame Seeds"
+    )
+
+fun mockProductDetails() = listOf(
+    ProductDetail(
+        id = "10",
+        price = "€20",
+        title = "Bananas Pacovan",
+        imageUrl = "url_img",
+        description = "Organic. Suitable for vegetarians",
+        allergyInformation = "May contain traces of Sesame Seeds"
+    )
 )
 
 fun mockProductDetailDto() = ProductDetailDto(

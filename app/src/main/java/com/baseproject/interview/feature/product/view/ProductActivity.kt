@@ -3,11 +3,12 @@ package com.baseproject.interview.feature.product.view
 import android.os.Bundle
 import android.util.Log
 import com.baseproject.interview.R
-import com.baseproject.interview.feature.product.Product
+import com.baseproject.interview.feature.product.data.Product
 import com.baseproject.interview.feature.product.ProductContract
-import com.baseproject.interview.feature.productdetail.ProductDetail
+import com.baseproject.interview.feature.product.data.ProductDetail
+import com.baseproject.interview.feature.product.extensions.showProductDetailDialog
 import com.baseproject.interview.util.initGridLayout
-import com.baseproject.interview.util.showFullPhotoDialog
+
 
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
@@ -32,13 +33,13 @@ class ProductActivity : DaggerAppCompatActivity(),
         presenter.loadData()
     }
 
-    override fun setUpGridList(totalItems: Int, data: Product) {
+    override fun setUpGridList(totalItems: Int, product: Product) {
         adapter.spanCount = totalItems
         productList.initGridLayout(this, adapter, adapter.spanCount)
-        presenter.mapProductItems(data, clickProductDetail)
+        presenter.mapProductItems(product, clickProductDetail)
     }
 
-    override fun showProductDetail(data: ProductDetail) = this.showFullPhotoDialog(data)
+    override fun showProductDetail(productDetail: ProductDetail) = showProductDetailDialog(productDetail)
 
     override fun showProducts(section: Section) = adapter.add(section)
 

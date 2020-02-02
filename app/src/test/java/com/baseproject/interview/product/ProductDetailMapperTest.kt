@@ -1,9 +1,14 @@
-package com.baseproject.interview.productDetail
+package com.baseproject.interview.product
 
 import com.baseproject.interview.data.feature.productDetail.ProductDetailDtoMapper
 import com.baseproject.interview.mockProductDetail
 import com.baseproject.interview.mockProductDetailDto
+import com.baseproject.interview.mockProductDetails
+import org.hamcrest.CoreMatchers
+import org.hamcrest.CoreMatchers.hasItem
+import org.junit.Assert
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertThat
 import org.junit.Test
 
 class ProductDetailMapperTest {
@@ -16,14 +21,9 @@ class ProductDetailMapperTest {
         val productDetailDto = mockProductDetailDto()
         val expectedProductDetail = mockProductDetail()
         // when
-        val mappingResult = mapper.map(productDetailDto)
+        val mappingResult = mapper.map(listOf(mockProductDetailDto()))
         // then
-        assertEquals(expectedProductDetail.id, mappingResult.id)
-        assertEquals(expectedProductDetail.allergyInformation, mappingResult.allergyInformation)
-        assertEquals(expectedProductDetail.description, mappingResult.description)
-        assertEquals(expectedProductDetail.imageUrl, mappingResult.imageUrl)
-        assertEquals(expectedProductDetail.title, mappingResult.title)
-
+        assertThat(mappingResult, hasItem((expectedProductDetail)))
     }
 
 }

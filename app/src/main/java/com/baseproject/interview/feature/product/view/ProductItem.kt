@@ -2,7 +2,7 @@ package com.baseproject.interview.feature.product.view
 
 import android.annotation.SuppressLint
 import com.baseproject.interview.R
-import com.baseproject.interview.feature.product.SubItem
+import com.baseproject.interview.feature.product.data.SubItem
 import com.bumptech.glide.Glide
 import com.xwray.groupie.kotlinandroidextensions.GroupieViewHolder
 import com.xwray.groupie.kotlinandroidextensions.Item

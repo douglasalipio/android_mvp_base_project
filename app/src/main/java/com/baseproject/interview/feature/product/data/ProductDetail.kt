@@ -1,4 +1,4 @@
-package com.baseproject.interview.feature.productdetail
+package com.baseproject.interview.feature.product.data
 
 data class ProductDetail(
     var id: String,

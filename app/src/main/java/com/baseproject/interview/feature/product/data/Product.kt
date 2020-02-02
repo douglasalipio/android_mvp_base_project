@@ -1,4 +1,4 @@
-package com.baseproject.interview.feature.product
+package com.baseproject.interview.feature.product.data
 
 data class Product(var categories: List<Category>)
 

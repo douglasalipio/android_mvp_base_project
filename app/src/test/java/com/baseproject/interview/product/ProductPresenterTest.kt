@@ -3,16 +3,15 @@ package com.baseproject.interview.product
 import com.baseproject.interview.feature.product.ProductContract
 import com.baseproject.interview.feature.product.ProductInteractor
 import com.baseproject.interview.feature.product.ProductPresenter
+import com.baseproject.interview.mockProductDetail
 import com.baseproject.interview.mockProducts
+import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.capture
 import com.nhaarman.mockitokotlin2.verify
-import com.xwray.groupie.Section
 import org.junit.Before
 import org.junit.Test
-import org.mockito.ArgumentCaptor
-import org.mockito.Captor
-import org.mockito.Mock
-import org.mockito.MockitoAnnotations
+import org.mockito.*
+import org.mockito.ArgumentMatchers.anyString
 
 
 class ProductPresenterTest {
@@ -22,33 +21,42 @@ class ProductPresenterTest {
     private lateinit var interactor: ProductContract.Interactor
     @Captor
     private lateinit var getProductCallbackCaptor: ArgumentCaptor<ProductInteractor.GetProductCallback>
+    @Captor
+    private lateinit var getProductDetailCallbackCaptor: ArgumentCaptor<ProductInteractor.GetProductDetailCallback>
     private lateinit var presenter: ProductPresenter
     private val clickProductDetail: (String) -> Unit = {}
 
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
-        presenter =
-            ProductPresenter(interactor)
+        presenter = ProductPresenter(interactor)
         presenter.takeView(view)
     }
 
     @Test
-    fun `should return a list of features`() {
+    fun `should return a list of sections`() {
         presenter.loadData()
         presenter.mapProductItems(mockProducts(), clickProductDetail)
 
-        verify(interactor).requestData(capture(getProductCallbackCaptor))
+        verify(interactor).requestProducts(capture(getProductCallbackCaptor))
         getProductCallbackCaptor.value.onProductLoaded(mockProducts())
 
         verify(view).setUpGridList(1, mockProducts())
-        verify(view).showProducts(Section())
+        verify(view).showProducts(any())
     }
 
     @Test
-    fun `should show a error message`() {
+    fun `should show a error message after loading productDetail`() {
+        presenter.loadProductDetail("id")
+        verify(interactor).requestProductDetail(capture(getProductDetailCallbackCaptor), anyString())
+        getProductDetailCallbackCaptor.value.onDataNotAvailable("data not available.")
+        verify(view).showDataError()
+    }
+
+    @Test
+    fun `should show a error message after loading products`() {
         presenter.loadData()
-        verify(interactor).requestData(capture(getProductCallbackCaptor))
+        verify(interactor).requestProducts(capture(getProductCallbackCaptor))
         getProductCallbackCaptor.value.onDataNotAvailable("data not available.")
         verify(view).showDataError()
     }

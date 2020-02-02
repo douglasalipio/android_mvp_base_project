@@ -1,6 +1,6 @@
 package com.baseproject.interview.di
 
-import com.baseproject.interview.FeatureApplication
+import com.baseproject.interview.AppApplication
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -16,13 +16,13 @@ import javax.inject.Singleton
         MapperModule::class,
         RepositoryModule::class]
 )
-interface AppComponent : AndroidInjector<FeatureApplication> {
+interface AppComponent : AndroidInjector<AppApplication> {
 
     @Component.Builder
     interface Builder {
 
         @BindsInstance
-        fun application(app: FeatureApplication): Builder
+        fun application(app: AppApplication): Builder
 
         fun build(): AppComponent
     }
