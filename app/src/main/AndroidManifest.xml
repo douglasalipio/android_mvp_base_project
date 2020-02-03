@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        package="com.baseproject.interview">
+        package="com.baseproject.douglas">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-            android:name=".AppApplication"
+            android:name="com.baseproject.douglas.AppApplication"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
@@ -16,7 +16,7 @@
             android:theme="@style/AppTheme"
             tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity android:name=".feature.productdetail.ProductDetailActivity"></activity>
-        <activity android:name=".feature.product.view.ProductActivity">
+        <activity android:name="com.baseproject.douglas.feature.product.view.ProductActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
