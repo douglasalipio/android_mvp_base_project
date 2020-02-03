@@ -1,4 +1,4 @@
-package com.baseproject.interview.product
+package com.baseproject.interview
 
 import com.baseproject.interview.feature.product.ProductContract
 import com.baseproject.interview.feature.product.ProductInteractor

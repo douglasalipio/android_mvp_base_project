@@ -1,4 +1,4 @@
-package com.baseproject.interview.product
+package com.baseproject.interview
 
 import com.baseproject.interview.data.feature.productDetail.ProductDetailDtoMapper
 import com.baseproject.interview.mockProductDetail
@@ -18,10 +18,10 @@ class ProductDetailMapperTest {
     @Test
     fun `should map section model to section`() {
         // given
-        val productDetailDto = mockProductDetailDto()
+        val productDetailDto = listOf(mockProductDetailDto())
         val expectedProductDetail = mockProductDetail()
         // when
-        val mappingResult = mapper.map(listOf(mockProductDetailDto()))
+        val mappingResult = mapper.map(productDetailDto)
         // then
         assertThat(mappingResult, hasItem((expectedProductDetail)))
     }

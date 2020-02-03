@@ -39,7 +39,9 @@ class ProductActivity : DaggerAppCompatActivity(),
         presenter.mapProductItems(product, clickProductDetail)
     }
 
-    override fun showProductDetail(productDetail: ProductDetail) = showProductDetailDialog(productDetail)
+    override fun showProductDetail(productDetail: ProductDetail) {
+        showProductDetailDialog(productDetail)
+    }
 
     override fun showProducts(section: Section) = adapter.add(section)
 
